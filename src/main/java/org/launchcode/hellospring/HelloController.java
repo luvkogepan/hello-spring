@@ -36,7 +36,7 @@ public class HelloController {
         @GetMapping("hello-forms")
     @ResponseBody
     public String helloForms() {
-        return "<form method = 'POST'><input name = 'name' type = 'text'><button type = 'submit'>Greet Me</form>";
+        return "<form method = 'POST'><input name = 'name' type = 'text'><select name = 'language' id = language-select'><option value = ''>Choose a language<option value='English'><option value='French'><option value='Korean'><option value='Spanish'><option value='Japanese'><button type = 'submit'>Greet Me</form>";
         }
 
         @PostMapping("hello-forms")
