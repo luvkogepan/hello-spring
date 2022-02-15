@@ -1,4 +1,4 @@
-package org.launchcode.hellospring;
+package org.launchcode.hellospring.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 //automatically maps hello before every single method
 //@RequestMapping(value = "hello")
-public class HelloController {
-    //response to requests to the root path: /
+public class HelloSpringController {
+//    //response to requests to the root path: /
     @GetMapping("")
     @ResponseBody
         public String hello() {
@@ -26,14 +26,14 @@ public class HelloController {
     public String helloQuery(@RequestParam String name) {
         return "Hello, "+name + "!";
         }
-        //responds to GET request like /hi/Michelle
-        @GetMapping("hi/{name}")
+        //responds to GET request like /hello/Michelle
+        @GetMapping("hello/{name}")
     @ResponseBody
-    public String hiQuery(@PathVariable String name) {
+    public String helloAgain(@PathVariable String name) {
         return "Hello, "+name+"!";
         }
 
-        @GetMapping("hello-forms")
+        @GetMapping("form")
     @ResponseBody
     public String helloForms() {
         return "<form method = 'POST'><input name = 'userName' type = 'text'><select name = 'lang' " +
@@ -90,4 +90,30 @@ public class HelloController {
         }
         return greeting += userName + "!";
         }
+
+//    @RequestMapping(value="hello", method = {RequestMethod.GET, RequestMethod.POST})
+//    @ResponseBody
+//    public String hello(@RequestParam String name) {
+//        return "Hello, "+name+"!";
+//    }
+//
+//    @GetMapping("Hello/{name}")
+//    @ResponseBody
+//    public String helloAgain(@PathVariable String name) {
+//        return "Hello, "+name+"!";
+//    }
+//
+//    @GetMapping("form")
+//    @ResponseBody
+//    public String helloForm() {
+//        String html = "<html>" +
+//                "<body>" +
+//                "<form method='post action='hello>" +
+//                "<input type='text' name='name />" +
+//                "<input type='submit' value=''Greet Me!' />" +
+//                "</form>" +
+//                "</body>" +
+//                "</html>";
+//        return html;
+//    }
 }
