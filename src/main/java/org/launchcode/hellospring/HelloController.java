@@ -36,12 +36,58 @@ public class HelloController {
         @GetMapping("hello-forms")
     @ResponseBody
     public String helloForms() {
-        return "<form method = 'POST'><input name = 'name' type = 'text'><select name = 'language' id = language-select'><option value = ''>Choose a language<option value='English'><option value='French'><option value='Korean'><option value='Spanish'><option value='Japanese'><button type = 'submit'>Greet Me</form>";
+        return "<form method = 'POST'><input name = 'userName' type = 'text'><select name = 'lang' " +
+                "id = 'language-select'><option value = ''>Choose a language</option><option value='English'>" +
+                "English</option><option value='French'>French</option><option value='Korean'>Korean" +
+                "<option value='Spanish'>Spanish</option><option value='Japanese'>Japanese</option></select>" +
+                "<button type = 'submit'>Greet Me</form>";
         }
 
-        @PostMapping("hello-forms")
+//        @PostMapping("hello-forms")
+//    @ResponseBody
+//    public String helloForms(@RequestParam String name) {
+//        return "Hello, "+name+"!";
+//        }
+
+    @PostMapping("hello-forms")
     @ResponseBody
-    public String helloForms(@RequestParam String name) {
-        return "Hello, "+name+"!";
+    public String helloForms(@RequestParam String userName, @RequestParam String lang) {
+        return createMessage(userName, lang);
+    }
+
+//        @PostMapping("hello-forms")
+//    @ResponseBody
+//    public static String createMessage(@RequestParam String userName,@RequestParam String lang) {
+//        String msg = null;
+//        if (lang == "English") {
+//            msg = "Hello, "+userName+"!";
+//        } else if (lang == "French") {
+//            msg = "Bonjour, "+userName+"!";
+//        } else if (lang == "Korean") {
+//            msg = "Annyoung, "+userName+"!";
+//        } else if (lang == "Spanish") {
+//            msg = "Hola, "+userName+"!";
+//        } else if (lang == "Japanese") {
+//            msg = "Konnichiwa, "+userName+"!";
+//        }
+//        return msg;
+//        }
+        //return createMessage(userName, lang);
+
+        public static String createMessage(String userName, String lang) {
+        String greeting = "";
+
+        if (lang.equals("English")) {
+            greeting += "Hello, ";
+        } else if (lang.equals("Spanish")) {
+            greeting +="Hola, ";
+        } else if (lang.equals("French")) {
+            greeting += "Bonjour, ";
+        } else if (lang.equals("Korean")) {
+            greeting += "Annyoung, ";
+        } else if (lang.equals("Japanese")) {
+            greeting += "Konnichiwa, ";
+        }
+        return greeting += userName + "!";
         }
 }
